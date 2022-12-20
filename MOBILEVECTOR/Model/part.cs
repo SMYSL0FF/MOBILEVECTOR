@@ -7,21 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MOBILEVECTOR
+namespace MOBILEVECTOR.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class cheque
+    public partial class part
     {
-        public int id_cheque { get; set; }
-        public System.DateTime date { get; set; }
-        public int id_client { get; set; }
-        public int id_employee { get; set; }
-        public int id_part { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public part()
+        {
+            this.cheque = new HashSet<cheque>();
+        }
     
-        public virtual Client Client { get; set; }
-        public virtual employee employee { get; set; }
-        public virtual part part { get; set; }
+        public int id_part { get; set; }
+        public string part_name { get; set; }
+        public string manufacturer { get; set; }
+        public int price { get; set; }
+        public string warranty { get; set; }
+        public int id_client { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cheque> cheque { get; set; }
     }
 }

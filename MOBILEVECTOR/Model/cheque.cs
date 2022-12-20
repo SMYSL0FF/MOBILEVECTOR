@@ -7,17 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MOBILEVECTOR
+namespace MOBILEVECTOR.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class cheque
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id_cheque { get; set; }
+        public System.DateTime date { get; set; }
+        public int id_client { get; set; }
+        public int id_employee { get; set; }
+        public int id_part { get; set; }
+    
+        public virtual Client Client { get; set; }
+        public virtual employee employee { get; set; }
+        public virtual part part { get; set; }
     }
 }

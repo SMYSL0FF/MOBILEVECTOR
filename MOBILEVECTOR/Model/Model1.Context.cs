@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MOBILEVECTOR
+namespace MOBILEVECTOR.Model
 {
     using System;
     using System.Data.Entity;
