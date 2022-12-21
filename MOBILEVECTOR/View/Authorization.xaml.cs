@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using MOBILEVECTOR.Core;
+using MOBILEVECTOR.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +30,29 @@ namespace MOBILEVECTOR.View
 
         private void Btn_enter_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            try
+            {
+                employee Name = FrameNavigate.DB.employee.FirstOrDefault(u =>
+                u.name_employee == TxbLogin.Text && u.name_employee == PsbPassword.Password);
 
+                if (Name == null)
+                {
+                    MessageBox.Show("Ошибка данных",
+                        "Системное сообщение",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
+
+            }
+            catch (Exception ex)
+             {
+                    MessageBox.Show(ex.Message.ToString(),
+                        "системная ошибка",
+                       MessageBoxButton.OK,
+                       MessageBoxImage.Error);
+
+             }
+
+            }
         }
     }
-}

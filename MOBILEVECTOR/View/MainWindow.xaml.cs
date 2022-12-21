@@ -1,4 +1,5 @@
 ﻿using MOBILEVECTOR.Core;
+using MOBILEVECTOR.Model;
 using MOBILEVECTOR.View;
 using System.Windows;
 using System.Windows.Input;
@@ -12,6 +13,8 @@ namespace MOBILEVECTOR
             InitializeComponent();
 
             FrameNavigate.FrameObject = MainWindowFrame;
+            FrameNavigate.DB = new MOBILEVECTOREntities();
+            MainWindowFrame.Navigate(new Authorization());
         }
 
         private void Btn_new_employee_Click(object sender, RoutedEventArgs e)
