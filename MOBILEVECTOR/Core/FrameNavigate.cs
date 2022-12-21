@@ -11,7 +11,7 @@ namespace MOBILEVECTOR.Core
     public static class FrameNavigate
     {
         public static Frame FrameObject { get; set; }
-        public static MOBILEVECTOREntities DB { get; set; }
+        public static MOBILEVECTOREntities1 DB { get; set; }
     }
    
 }

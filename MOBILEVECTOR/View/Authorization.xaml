@@ -48,7 +48,7 @@
                         Cursor="Hand"
                         VerticalAlignment="Bottom"
                         Margin="140 0 140 50"
-                        MouseDown="Btn_enter_MouseDown"
+                        Click="Btn_enter_Click"
                         BorderBrush="#FF8289A3"/>
                 
             </Grid>

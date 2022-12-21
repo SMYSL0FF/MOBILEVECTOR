@@ -28,31 +28,45 @@ namespace MOBILEVECTOR.View
             InitializeComponent();
         }
 
-        private void Btn_enter_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Btn_enter_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                employee Name = FrameNavigate.DB.employee.FirstOrDefault(u =>
-                u.name_employee == TxbLogin.Text && u.name_employee == PsbPassword.Password);
+                Users userModel = FrameNavigate.DB.Users.FirstOrDefault(u =>
+                u.UserName == TxbLogin.Text && u.Password == PsbPassword.Password);
 
-                if (Name == null)
+                if (userModel == null)
                 {
                     MessageBox.Show("Ошибка данных",
                         "Системное сообщение",
                         MessageBoxButton.OK,
                         MessageBoxImage.Error);
                 }
+                else
+                {
+                    switch (userModel.IdRole)
+                    {
+                        case 1:
+                            FrameNavigate.FrameObject.Navigate(new MainUserPage());
+                            break;
+
+                        case 2:
+                            FrameNavigate.FrameObject.Navigate(new MainAdminPage());
+                            break;
+                    }
+                }
 
             }
             catch (Exception ex)
-             {
-                    MessageBox.Show(ex.Message.ToString(),
-                        "системная ошибка",
-                       MessageBoxButton.OK,
-                       MessageBoxImage.Error);
-
-             }
+            {
+                MessageBox.Show(ex.Message.ToString(),
+                    "системная ошибка",
+                   MessageBoxButton.OK,
+                   MessageBoxImage.Error);
 
             }
+
         }
     }
+}
+

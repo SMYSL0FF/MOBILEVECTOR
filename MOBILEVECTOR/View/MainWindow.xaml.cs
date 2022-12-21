@@ -13,7 +13,7 @@ namespace MOBILEVECTOR
             InitializeComponent();
 
             FrameNavigate.FrameObject = MainWindowFrame;
-            FrameNavigate.DB = new MOBILEVECTOREntities();
+            FrameNavigate.DB = new MOBILEVECTOREntities1();
             MainWindowFrame.Navigate(new Authorization());
         }
 
@@ -38,8 +38,13 @@ namespace MOBILEVECTOR
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove(); 
+        { 
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+             
         }
+
     }
 }

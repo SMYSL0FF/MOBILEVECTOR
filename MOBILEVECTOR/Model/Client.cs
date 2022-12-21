@@ -17,17 +17,17 @@ namespace MOBILEVECTOR.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
-            this.cheque = new HashSet<cheque>();
+            this.Cheque = new HashSet<Cheque>();
         }
     
-        public int id_client { get; set; }
-        public string name_client { get; set; }
-        public int phone_number_client { get; set; }
-        public string address { get; set; }
-        public string telegram_username { get; set; }
-        public string device { get; set; }
+        public int IdClient { get; set; }
+        public string NameClient { get; set; }
+        public string PhoneClient { get; set; }
+        public string AddressClient { get; set; }
+        public string TelegramUsername { get; set; }
+        public string Devise { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cheque> cheque { get; set; }
+        public virtual ICollection<Cheque> Cheque { get; set; }
     }
 }

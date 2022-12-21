@@ -13,10 +13,10 @@ namespace MOBILEVECTOR.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MOBILEVECTOREntities : DbContext
+    public partial class MOBILEVECTOREntities1 : DbContext
     {
-        public MOBILEVECTOREntities()
-            : base("name=MOBILEVECTOREntities")
+        public MOBILEVECTOREntities1()
+            : base("name=MOBILEVECTOREntities1")
         {
         }
     
@@ -25,10 +25,12 @@ namespace MOBILEVECTOR.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<cheque> cheque { get; set; }
+        public virtual DbSet<Cheque> Cheque { get; set; }
         public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<employee> employee { get; set; }
-        public virtual DbSet<part> part { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Part> Part { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

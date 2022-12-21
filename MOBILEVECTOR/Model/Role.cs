@@ -12,22 +12,21 @@ namespace MOBILEVECTOR.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Part
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Part()
+        public Role()
         {
-            this.Cheque = new HashSet<Cheque>();
+            this.Employee = new HashSet<Employee>();
+            this.Users = new HashSet<Users>();
         }
     
-        public int IdPart { get; set; }
-        public string PartName { get; set; }
-        public string Manufacturer { get; set; }
-        public string Price { get; set; }
-        public string Warranty { get; set; }
-        public int IdClient { get; set; }
+        public int IdRole { get; set; }
+        public string RoleName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cheque> Cheque { get; set; }
+        public virtual ICollection<Employee> Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
     }
 }
