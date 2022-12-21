@@ -51,7 +51,7 @@
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"/>
                 
-                <materialDesign:PackIcon Kind="Close"
+                <materialDesign:PackIcon Kind="WindowClose"
                                  Height="30"
                                  Width="30"
                                  HorizontalAlignment="Right"
