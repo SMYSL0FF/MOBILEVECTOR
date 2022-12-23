@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MOBILEVECTOR.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +25,18 @@ namespace MOBILEVECTOR.View
         public MainAdminPage()
         {
             InitializeComponent();
+
+            InfoE.ItemsSource = FrameNavigate.DB.Employee.ToList();
+        }
+
+        private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void PackIcon_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            FrameNavigate.FrameObject.Navigate(new Authorization());
         }
     }
 }

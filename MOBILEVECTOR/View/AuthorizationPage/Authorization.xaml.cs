@@ -53,6 +53,7 @@ namespace MOBILEVECTOR.View
                         case 2:
                             FrameNavigate.FrameObject.Navigate(new MainAdminPage());
                             break;
+
                     }
                 }
 

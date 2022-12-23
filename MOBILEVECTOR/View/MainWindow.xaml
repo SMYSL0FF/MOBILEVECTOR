@@ -14,52 +14,50 @@
          Background="Transparent"
         FontSize="18"
         ResizeMode="NoResize"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        FontFamily="{DynamicResource MaterialDesignFont}" 
+        Icon="/Images/logo.png">
 
 
-    <Grid Margin="20"
+    <Grid 
           MouseDown="Grid_MouseDown">
 
         <Grid.Effect>
             <DropShadowEffect BlurRadius="30"
-                                  ShadowDepth="4"
-                                  Opacity="0.4"/>
+                              ShadowDepth="4"
+                              Opacity="0.4"/>
         </Grid.Effect>
-        <Border CornerRadius="10,10,10,10"
-                ClipToBounds="True"
-                >
-               
+        <Border
+                ClipToBounds="True" CornerRadius="10,10,10,10">
+
 
             <Grid Name="Cap">
-                
+
                 <Image Source="/Images/Background.png" />
-                
+
                 <TextBlock FontSize="30"
                        FontWeight="Black"
                        Text="МОБАЙЛВЕКТОР"
-                       Foreground="Black" Margin="100,52,600,578"/>
+                       Foreground="Black" Margin="109,62,591,568"/>
                 <TextBlock FontSize="15"
                        FontWeight="Black"
                        Text="Курсовая работа"
-                       Foreground="Black" Margin="100,25,740,613"/>
+                       Foreground="Black" Margin="109,38,731,600"/>
 
                 <Image x:Name="Logo"
                     Source="/Images/logo.png" 
-                    Width="130"
-                    Height="130"
-                   Margin="-15,-10,0,0"
+                    Width="90"
+                    Height="90"
                    HorizontalAlignment="Left"
-                   VerticalAlignment="Top"/>
-                
-                <materialDesign:PackIcon Kind="WindowClose"
+                   VerticalAlignment="Top" Margin="14,13,0,0"/>
+
+                <materialDesign:PackIcon Kind="Close"
                                  Height="30"
                                  Width="30"
                                  HorizontalAlignment="Right"
-                                 Opacity="0.4"
                                  Margin="0 13 14 0"
                                  MouseDown="PackIcon_MouseDown"
-                                 Cursor="Hand"/>
-                
+                                 Cursor="Hand" ToolTip="Закрыть"/>
+
                 <StackPanel Orientation="Vertical"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Right"
@@ -74,7 +72,7 @@
                             materialDesign:ButtonAssist.CornerRadius="22"
                             Click="Btn_Authorization_Click"
                             Cursor=""/>
-                    
+
                     <Button x:Name="Btn_new_employee"
                             Content="Новый сотрудник"
                             Background="#585183"
@@ -97,14 +95,16 @@
                             Click="Btn_status_Click"
                             Cursor="Hand"/>
                 </StackPanel>
-                
+
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Bottom"
-                            Margin="20 0 0 10">
+                            Margin="10 0 0 10">
                     <Image Source="/Images/telegram.png" 
                            Width="40"
-                           Height="40"/>
+                           Height="40"
+                           ToolTip="Перейти в телеграм канал МОБАЙЛВЕКТОР"
+                           MouseDown="Image_MouseDown"/>
                     <Image Source="/Images/vk.png"
                            Width="40"
                            Height="40"
@@ -114,11 +114,11 @@
                            Height="40" 
                            Margin="5 0 0 0"/>
                 </StackPanel>
-                
+
             </Grid>
         </Border>
         <Frame x:Name="MainWindowFrame"
-               Margin="200 150"
+               
                NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
