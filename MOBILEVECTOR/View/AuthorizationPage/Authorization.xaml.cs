@@ -33,7 +33,7 @@ namespace MOBILEVECTOR.View
             try
             {
                 Users userModel = FrameNavigate.DB.Users.FirstOrDefault(u =>
-                u.UserName == TxbLogin.Text && u.Password == PsbPassword.Password);
+                u.login == TxbLogin.Text && u.Password == PsbPassword.Password);
 
                 if (userModel == null)
                 {

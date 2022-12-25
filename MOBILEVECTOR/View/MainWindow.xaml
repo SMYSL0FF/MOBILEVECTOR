@@ -14,12 +14,12 @@
          Background="Transparent"
         FontSize="18"
         ResizeMode="NoResize"
-        FontFamily="{DynamicResource MaterialDesignFont}" 
-        Icon="/Images/logo.png">
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Icon="/View/logo.png" >
 
 
     <Grid 
-          MouseDown="Grid_MouseDown">
+          MouseDown="Grid_MouseDown" Background="White">
 
         <Grid.Effect>
             <DropShadowEffect BlurRadius="30"
@@ -32,7 +32,7 @@
 
             <Grid Name="Cap">
 
-                <Image Source="/Images/Background.png" />
+                <Image Source="/Images/Background.png" OpacityMask="#66FFFFFF" />
 
                 <TextBlock FontSize="30"
                        FontWeight="Black"
@@ -84,15 +84,15 @@
                             Click="Btn_new_employee_Click"
                             Cursor="Hand"/>
 
-                    <Button x:Name="Btn_status"
-                            Content="Узнать статус ремонта"
+                    <Button x:Name="Btn_New_Client"
+                            Content="Регистрация клиента"
                             Background="#585183"
                             FontSize="20"
                             Width="250"
                             Height="40"
                             Margin="0 10 0 0"
                             materialDesign:ButtonAssist.CornerRadius="22"
-                            Click="Btn_status_Click"
+                            Click="Btn_New_Client_Click"
                             Cursor="Hand"/>
                 </StackPanel>
 
@@ -119,6 +119,6 @@
         </Border>
         <Frame x:Name="MainWindowFrame"
                
-               NavigationUIVisibility="Hidden"/>
+               NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

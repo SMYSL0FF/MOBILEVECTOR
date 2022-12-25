@@ -29,5 +29,6 @@ namespace MOBILEVECTOR.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cheque> Cheque { get; set; }
+        public virtual Client Client { get; set; }
     }
 }

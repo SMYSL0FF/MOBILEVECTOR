@@ -30,12 +30,10 @@ namespace MOBILEVECTOR
 
         private void Btn_new_employee_Click(object sender, RoutedEventArgs e)
         {
-            FrameNavigate.FrameObject.Navigate(new New_employee());
-        }
-
-        private void Btn_status_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNavigate.FrameObject.Navigate(new Status());
+            MessageBox.Show("Чтобы добавить сотрудника войдите в аккаунт администратора!",
+                "Системное уведомление",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
         }
 
         private void Btn_Authorization_Click(object sender, RoutedEventArgs e)
@@ -51,6 +49,11 @@ namespace MOBILEVECTOR
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start("https://t.me/MOBILEVECTOR");
+        }
+
+        private void Btn_New_Client_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNavigate.FrameObject.Navigate(new View.AuthorizationPage.New_Client());
         }
     }
 }

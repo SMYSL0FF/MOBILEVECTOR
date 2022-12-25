@@ -25,12 +25,8 @@ namespace MOBILEVECTOR.Model
         public string Post { get; set; }
         public string PhoneEmployee { get; set; }
         public string AddressEmployee { get; set; }
-        public int IdRole { get; set; }
-        public int IdUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cheque> Cheque { get; set; }
-        public virtual Role Role { get; set; }
-        public virtual Users Users { get; set; }
     }
 }

@@ -1,0 +1,83 @@
+﻿<Page x:Class="MOBILEVECTOR.View.AuthorizationPage.New_Cheque"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:MOBILEVECTOR.View.AuthorizationPage"
+      mc:Ignorable="d" 
+       Height="350" Width="500"
+      Background="#00000000"
+      FontSize="20"
+      FontFamily="{DynamicResource MaterialDesignFont}" Foreground="White">
+
+    <Grid Margin="20" Background="#B268696F">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="30"
+                                ShadowDepth="1"
+                                Opacity="0.4"/>
+        </Grid.Effect>
+
+        <Border  CornerRadius="10,10,10,10">
+            <Grid Name="new_employee_grid"
+                  UseLayoutRounding="True">
+                <StackPanel Orientation="Vertical"
+                            Margin="70,12,70,70">
+                    <TextBox Name="TxbDate"
+                        Style="{StaticResource MaterialDesignTextBox}"
+                         materialDesign:HintAssist.Hint="Дата"
+                         materialDesign:HintAssist.FloatingOffset="0,-20"
+                        
+                         Background="#FF71778E" CaretBrush="#FF7A819B" SelectionBrush="#FF71778E">
+                    </TextBox>
+                    <TextBox Name="TxbPart"
+                        Style="{StaticResource MaterialDesignTextBox}"
+                         materialDesign:HintAssist.Hint="Запчасть"
+                         materialDesign:HintAssist.FloatingOffset="0,-20"
+                         Margin="0 5"
+                         Background="#FF71778E" CaretBrush="#FF7A819B" SelectionBrush="#FF71778E">
+                    </TextBox>
+                    <TextBox Name="TxbManufacturer"
+                        Style="{StaticResource MaterialDesignTextBox}"
+                         materialDesign:HintAssist.Hint="Страна-производитель"
+                         materialDesign:HintAssist.FloatingOffset="0,-20"
+                         Background="#FF71778E" CaretBrush="#FF7A819B" SelectionBrush="#FF71778E">
+                    </TextBox>
+                    <TextBox Name="TxbPrice"
+                        Style="{StaticResource MaterialDesignTextBox}"
+                         materialDesign:HintAssist.Hint="Цена"
+                         materialDesign:HintAssist.FloatingOffset="0,-20"
+                         Margin="0 5"
+                         Background="#FF71778E" CaretBrush="#FF7A819B" SelectionBrush="#FF71778E">
+                    </TextBox>
+                    <TextBox Name="TxbWarranty"
+                        Style="{StaticResource MaterialDesignTextBox}"
+                         materialDesign:HintAssist.Hint="Гарантия"
+                         materialDesign:HintAssist.FloatingOffset="0,-20"
+                         
+                         Background="#FF71778E" CaretBrush="#FF7A819B" SelectionBrush="#FF71778E" >
+                    </TextBox>
+                    <TextBox Name="TxbClient"
+                        Style="{StaticResource MaterialDesignTextBox}"
+                         materialDesign:HintAssist.Hint="ID клиента"
+                         materialDesign:HintAssist.FloatingOffset="0,-20"
+                         Margin="0 5"
+                         Background="#FF71778E" CaretBrush="#FF7A819B" SelectionBrush="#FF71778E" >
+                    </TextBox>
+
+
+                </StackPanel>
+                <Button Name="BtnAdd"
+                        Content="ДОБАВИТЬ"
+                        Background="#FF71778E"
+                        Cursor="Hand"
+                        VerticalAlignment="Top"
+                        Margin="140,244,140,0"
+                        Click="BtnAdd_Click"
+                        BorderBrush="#FF8289A3"/>
+
+
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

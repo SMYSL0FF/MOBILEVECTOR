@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="1000"
       FontSize="18"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+      FontFamily="{DynamicResource MaterialDesignFont}">
 
 
     <Grid Background="White">
@@ -18,23 +18,6 @@
                                   Opacity="0.4"/>
         </Grid.Effect>
         <Image Source="/Images/Background.png" Opacity="0.4" />
-
-        <materialDesign:PackIcon Kind="ArrowLeft" 
-                                 Height="30"
-                                 Width="30"
-                                 HorizontalAlignment="Left"
-                                 VerticalAlignment="Top"
-                                 Margin="14 13 0 0"
-                                 MouseDown="PackIcon_MouseDown_1"
-                                 Cursor="Hand"/>
-
-        <materialDesign:PackIcon Kind="Close"
-                                 Height="30"
-                                 Width="30"
-                                 HorizontalAlignment="Right"
-                                 Margin="0 13 14 0"
-                                 MouseDown="PackIcon_MouseDown"
-                                 Cursor="Hand"/>
 
         <Image Source="/Images/logo.png"
                Width="40"
@@ -46,40 +29,445 @@
                    Text="МОБАЙЛВЕКТОР"
                    Foreground="Black"
                    Margin="419,34,404,601"/>
-        <DataGrid x:Name="InfoE"
-            Margin="29,66,29,26"
+        <materialDesign:Card Margin="0,71,0,0" Background="Transparent">
+            <TabControl
+    materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
+    SnapsToDevicePixels="True"
+    Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+    TabStripPlacement="Left" Margin="0,-71,0,0" Background="#00FAFAFA">
+                <materialDesign:NavigationRailAssist.FloatingContent>
+                    <Button
+        Margin="8"
+        Content="{materialDesign:PackIcon Kind=Plus}"
+        Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Visibility="Hidden" />
+                </materialDesign:NavigationRailAssist.FloatingContent>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+          Width="auto"
+          Height="auto">
+                            <materialDesign:PackIcon
+            Width="24"
+            Height="24"
+            HorizontalAlignment="Center"
+            Kind="AccountTie" />
+                            <TextBlock
+            HorizontalAlignment="Center"
+            Text="Users" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel
+        Margin="0,0,0,0">
+                        <StackPanel
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ContentSave"
+                                 x:Name="Save"  
+                                 Height="50"
+                                 Width="50"
+                                 Margin="10"
+                                 Cursor="Hand" ToolTip="Сохранить" Foreground="Black" Visibility="Hidden"/>
+                            <Button
+                                Height="50"
+                                 Width="50" Visibility="Hidden"
+                                 />
+                            <materialDesign:PackIcon Kind="Add"
+                                 x:Name="AddEmployee"
+                                 Height="50"
+                                 Width="50"
+                                 HorizontalAlignment="Right"
+                                 Margin="0,10,870,0"
+                                 MouseDown="AddEmployee_MouseDown"
+                                 Cursor="Hand" ToolTip="Добавить аккаунт сотрудника"/>
+                        </StackPanel>
+                        <DataGrid x:Name="InfoE"
+                                  Margin="0 0"
+                                  Width="924"
+                                  Height="629"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="False"
+                                  Background="#B2FFFFFF" 
+                                  RowBackground="#66FFFFFF"
+                                  AlternatingRowBackground="#66808080"
+                                  GridLinesVisibility="Horizontal"
+                                  ColumnHeaderHeight="50"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="True"
+                                  Effect="{StaticResource MaterialDesignElevationShadow3}"
+                                  BorderBrush="#FF302C50">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="СОТРУДНИК"
+                                    Binding="{Binding NameEmployee}"
+                                    FontSize="15"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ДОЛЖНОСТЬ"
+                                    Binding="{Binding Post}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="НОМЕР ТЕЛЕФОНА"
+                                    Binding="{Binding PhoneEmployee}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="АДРЕС"
+                                    Binding="{Binding AddressEmployee}"/>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="BtnDeleteEmployee"
+                                                Background="Transparent"
+                                                    Foreground="Gray"
+                                                    Click="BtnDeleteEmployee_Click"
+                                    Style="{StaticResource MaterialDesignFlatLightButton}">
+                                                <StackPanel>
+                                                    <materialDesign:PackIcon Kind="Delete"/>
+                                                </StackPanel>
+
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+
+                    </StackPanel>
+
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+          Width="auto"
+          Height="auto">
+                            <materialDesign:PackIcon
+            Width="24"
+            Height="24"
+            HorizontalAlignment="Center"
+            Kind="AccountCash" />
+                            <TextBlock
+            HorizontalAlignment="Center"
+            Text="Clients" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel>
+                        <DataGrid x:Name="InfoClient"
+                                  Margin="0 70"
+                                  Width="924"
+                                  Height="629"
             AutoGenerateColumns="False"
             IsReadOnly="False"
-            Background="Transparent"
+            Background="#B2FFFFFF"
             RowBackground="#66FFFFFF"
             AlternatingRowBackground="#66808080"
             GridLinesVisibility="Horizontal"
             ColumnHeaderHeight="50"
             CanUserAddRows="False"
             CanUserDeleteRows="False"
-            CanUserResizeRows="False"
-            Effect="{StaticResource MaterialDesignElevationShadow3}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="Auto"
-                                    Header="СОТРУДНИК"
-                                    Binding="{Binding NameEmployee}"
+            Effect="{StaticResource MaterialDesignElevationShadow3}" 
+            BorderBrush="#FF302C50">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="КЛИЕНТ"
+                                    Binding="{Binding NameClient}"
                                     FontSize="15"/>
-                <DataGridTextColumn Width="Auto"
-                                    Header="ДОЛЖНОСТЬ"
-                                    Binding="{Binding Post }"/>
-                <DataGridTextColumn Width="Auto"
-                                    Header="Номер телефона"
-                                    Binding="{Binding PhoneEmployee }"/>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button>
-                                
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="НОМЕР ТЕЛЕФОНА"
+                                    Binding="{Binding PhoneClient}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="АДРЕС"
+                                    Binding="{Binding  AddressClient}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ТЕЛЕГРАММ"
+                                    Binding="{Binding  TelegramUsername}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="УСТРОЙСТВО"
+                                    Binding="{Binding Device}"/>
+
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="BtndeleteClient"
+                                                Background="Transparent"
+                                                Foreground="Gray"
+                                                    Click="BtndeleteClient_Click"
+                                    Style="{StaticResource MaterialDesignFlatLightButton}">
+                                                <StackPanel>
+                                                    <materialDesign:PackIcon Kind="Delete"/>
+                                                </StackPanel>
+
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+          Width="auto"
+          Height="auto">
+                            <materialDesign:PackIcon
+            Width="24"
+            Height="24"
+            HorizontalAlignment="Center"
+            Kind="FileDocumentOutline" />
+                            <TextBlock
+            HorizontalAlignment="Center"
+            Text="Cheque" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel>
+                        <DataGrid x:Name="InfoCheque"
+                                  Margin="0 70"
+                                  Width="924"
+                                  Height="629"
+            AutoGenerateColumns="False"
+            IsReadOnly="False"
+                                  CanUserSortColumns="False"
+            Background="#B2FFFFFF"
+            RowBackground="#66FFFFFF"
+            AlternatingRowBackground="#66808080"
+            GridLinesVisibility="Horizontal"
+            ColumnHeaderHeight="50"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            Effect="{StaticResource MaterialDesignElevationShadow16}" 
+            BorderBrush="#FF302C50">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ДАТА"
+                                    Binding="{Binding Date}"
+                                    FontSize="15"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="МАСТЕР"
+                                    Binding="{Binding Employee.NameEmployee}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="КЛИЕНТ"
+                                    Binding="{Binding  Client.NameClient}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ЗАПЧАСТЬ"
+                                    Binding="{Binding  Part.PartName}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="УСТРОЙСТВО"
+                                    Binding="{Binding Client.Device}"/>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="BtnDeleteCheque"
+                                                Background="Transparent"
+                                                    Foreground="Gray"
+                                                    Click="BtnDeleteCheque_Click"
+                                    Style="{StaticResource MaterialDesignFlatLightButton}">
+                                                <StackPanel>
+                                                    <materialDesign:PackIcon Kind="Delete"/>
+                                                </StackPanel>
+
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+          Width="auto"
+          Height="auto">
+                            <materialDesign:PackIcon
+            Width="24"
+            Height="24"
+            HorizontalAlignment="Center"
+            Kind="AccountKey" />
+                            <TextBlock
+            HorizontalAlignment="Center"
+            Text="Account" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel>
+                        <DataGrid x:Name="InfoAccount"
+                                  Margin="0 70"
+                                  Width="924"
+                                  Height="629"
+            AutoGenerateColumns="False"
+            IsReadOnly="False"
+            Background="#B2FFFFFF"
+            RowBackground="#66FFFFFF"
+            AlternatingRowBackground="#66808080"
+            GridLinesVisibility="Horizontal"
+            ColumnHeaderHeight="50"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            Effect="{StaticResource MaterialDesignElevationShadow3}" 
+            BorderBrush="#FF302C50">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ИМЯ ПОЛЬЗОВАТЕЛЯ"
+                                    Binding="{Binding login}"
+                                    FontSize="15"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ID ПОЛЬЗОВАТЕЛЯ"
+                                    Binding="{Binding IdUser}"
+                                    FontSize="15"/>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Name="BtnDeleteAccount"
+                                                Background="Transparent"
+                                                    Foreground="Gray"
+                                                    Click="BtnDeleteAccount_Click"
+                                    Style="{StaticResource MaterialDesignFlatLightButton}">
+                                                <StackPanel>
+                                                    <materialDesign:PackIcon Kind="Delete"/>
+                                                </StackPanel>
+
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+          Width="auto"
+          Height="auto">
+                            <materialDesign:PackIcon
+            Width="24"
+            Height="24"
+            HorizontalAlignment="Center"
+            Kind="Devices" />
+                            <TextBlock
+            HorizontalAlignment="Center"
+            Text="Part" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel>
+                        <DataGrid x:Name="InfoPart"
+                                  Margin="0 70"
+                                  Width="924"
+                                  Height="629"
+            AutoGenerateColumns="False"
+            IsReadOnly="False"
+            Background="#B2FFFFFF"
+            RowBackground="#66FFFFFF"
+            AlternatingRowBackground="#66808080"
+            GridLinesVisibility="Horizontal"
+            ColumnHeaderHeight="50"
+            CanUserAddRows="False"
+            CanUserDeleteRows="True"
+            Effect="{StaticResource MaterialDesignElevationShadow3}" 
+            BorderBrush="#FF302C50">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ЗАПЧАСТЬ"
+                                    Binding="{Binding PartName}"
+                                    FontSize="15"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ПРОИЗВОДИТЕЛЬ"
+                                    Binding="{Binding Manufacturer}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ЦЕНА"
+                                    Binding="{Binding  Price}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="ГАРАНТИЯ"
+                                    Binding="{Binding  Warranty}"/>
+                                <DataGridTextColumn Width="Auto"
+                                    CanUserResize="False"
+                                    Header="КЛИЕНТ"
+                                    Binding="{Binding Client.NameClient}"/>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="BtnDeletePart"
+                                                Background="Transparent"
+                                                    Foreground="Gray"
+                                                    Click="BtnDeletePart_Click"
+                                    Style="{StaticResource MaterialDesignFlatLightButton}">
+                                                <StackPanel>
+                                                    <materialDesign:PackIcon Kind="Delete"/>
+                                                </StackPanel>
+
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </materialDesign:Card>
+
+
+
+
+
+
+        <materialDesign:PackIcon Kind="ArrowLeft" 
+                                 Height="50"
+                                 Width="50"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Margin="10 10 0 0"
+                                 MouseDown="PackIcon_MouseDown_1"
+                                 Cursor="Hand"/>
+
+        <materialDesign:PackIcon Kind="Close"
+                                 Height="30"
+                                 Width="30"
+                                 HorizontalAlignment="Right"
+                                 Margin="0 13 14 0"
+                                 MouseDown="PackIcon_MouseDown"
+                                 Cursor="Hand"/>
+        <materialDesign:PackIcon Kind="ContentSave"
+                                 x:Name="Save1"  
+                                 Height="50"
+                                 Width="50"
+                                 Margin="81,10,0,0"
+                                 MouseDown="Save1_MouseDown"
+                                 Cursor="Hand" ToolTip="Сохранить" Foreground="Black"/>
+        <materialDesign:PackIcon Kind="Update"
+                                 Name="BtnUpdate"
+                                 Height="50"
+                                 Width="50"
+                                 Margin="140,10,0,0"
+                                 MouseDown="BtnUpdate_MouseDown"
+                                 Cursor="Hand" 
+                                 Foreground="Black"
+                                 ToolTip="Обновить"/>
+
+
+
+
+
+
     </Grid>
 </Page>

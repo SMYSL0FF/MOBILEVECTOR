@@ -14,6 +14,7 @@
           <Property Name="IdClient" Type="int" Nullable="false" />
           <Property Name="IdEmployee" Type="int" Nullable="false" />
           <Property Name="IdPart" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -24,7 +25,8 @@
           <Property Name="PhoneClient" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AddressClient" Type="nvarchar(max)" Nullable="false" />
           <Property Name="TelegramUsername" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Devise" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Device" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -35,15 +37,13 @@
           <Property Name="Post" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PhoneEmployee" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AddressEmployee" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="IdRole" Type="int" Nullable="false" />
-          <Property Name="IdUser" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Part">
           <Key>
             <PropertyRef Name="IdPart" />
           </Key>
           <Property Name="IdPart" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PartName" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PartName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Warranty" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -71,7 +71,7 @@
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
         </EntityType>
@@ -111,27 +111,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="IdRole" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="IdRole" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Employee_Users">
+        <Association Name="FK_Cheque_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="IdUser" />
             </Principal>
-            <Dependent Role="Employee">
+            <Dependent Role="Cheque">
               <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Part_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Part" Type="Self.Part" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Part">
+              <PropertyRef Name="IdClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -167,13 +167,13 @@
             <End Role="Part" EntitySet="Part" />
             <End Role="Cheque" EntitySet="Cheque" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Users" Association="Self.FK_Employee_Users">
+          <AssociationSet Name="FK_Cheque_Users" Association="Self.FK_Cheque_Users">
             <End Role="Users" EntitySet="Users" />
-            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Part_Client" Association="Self.FK_Part_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Part" EntitySet="Part" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
             <End Role="Role" EntitySet="Role" />
@@ -194,9 +194,11 @@
           <Property Name="IdClient" Type="Int32" Nullable="false" />
           <Property Name="IdEmployee" Type="Int32" Nullable="false" />
           <Property Name="IdPart" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Cheque_Client" FromRole="Cheque" ToRole="Client" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Cheque_Employee" FromRole="Cheque" ToRole="Employee" />
           <NavigationProperty Name="Part" Relationship="Self.FK_Cheque_Part" FromRole="Cheque" ToRole="Part" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Cheque_Users" FromRole="Cheque" ToRole="Users" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -207,8 +209,10 @@
           <Property Name="PhoneClient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddressClient" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TelegramUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Devise" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Device" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cheque" Relationship="Self.FK_Cheque_Client" FromRole="Client" ToRole="Cheque" />
+          <NavigationProperty Name="Part" Relationship="Self.FK_Part_Client" FromRole="Client" ToRole="Part" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -219,23 +223,20 @@
           <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhoneEmployee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddressEmployee" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdRole" Type="Int32" Nullable="false" />
-          <Property Name="IdUser" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cheque" Relationship="Self.FK_Cheque_Employee" FromRole="Employee" ToRole="Cheque" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Employee_Users" FromRole="Employee" ToRole="Users" />
         </EntityType>
         <EntityType Name="Part">
           <Key>
             <PropertyRef Name="IdPart" />
           </Key>
           <Property Name="IdPart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PartName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PartName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdClient" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cheque" Relationship="Self.FK_Cheque_Part" FromRole="Part" ToRole="Cheque" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Part_Client" FromRole="Part" ToRole="Client" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -243,7 +244,6 @@
           </Key>
           <Property Name="IdRole" Type="Int32" Nullable="false" />
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Role" FromRole="Role" ToRole="Users" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -261,10 +261,10 @@
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Users" FromRole="Users" ToRole="Employee" />
+          <NavigationProperty Name="Cheque" Relationship="Self.FK_Cheque_Users" FromRole="Users" ToRole="Cheque" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Users_Role" FromRole="Users" ToRole="Role" />
         </EntityType>
         <Association Name="FK_Cheque_Client">
@@ -303,27 +303,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="IdRole" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="IdRole" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Employee_Users">
+        <Association Name="FK_Cheque_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="IdUser" />
             </Principal>
-            <Dependent Role="Employee">
+            <Dependent Role="Cheque">
               <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Part_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Part" Type="Self.Part" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Part">
+              <PropertyRef Name="IdClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -359,13 +359,13 @@
             <End Role="Part" EntitySet="Part" />
             <End Role="Cheque" EntitySet="Cheque" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Users" Association="Self.FK_Employee_Users">
+          <AssociationSet Name="FK_Cheque_Users" Association="Self.FK_Cheque_Users">
             <End Role="Users" EntitySet="Users" />
-            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Part_Client" Association="Self.FK_Part_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Part" EntitySet="Part" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
             <End Role="Role" EntitySet="Role" />
@@ -386,6 +386,7 @@
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
                 <ScalarProperty Name="IdPart" ColumnName="IdPart" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -397,7 +398,8 @@
                 <ScalarProperty Name="PhoneClient" ColumnName="PhoneClient" />
                 <ScalarProperty Name="AddressClient" ColumnName="AddressClient" />
                 <ScalarProperty Name="TelegramUsername" ColumnName="TelegramUsername" />
-                <ScalarProperty Name="Devise" ColumnName="Devise" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -409,8 +411,6 @@
                 <ScalarProperty Name="Post" ColumnName="Post" />
                 <ScalarProperty Name="PhoneEmployee" ColumnName="PhoneEmployee" />
                 <ScalarProperty Name="AddressEmployee" ColumnName="AddressEmployee" />
-                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -449,7 +449,7 @@
             <EntityTypeMapping TypeName="MOBILEVECTORModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IdRole" ColumnName="IdRole" />
               </MappingFragment>

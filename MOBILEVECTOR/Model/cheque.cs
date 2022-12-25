@@ -19,9 +19,11 @@ namespace MOBILEVECTOR.Model
         public int IdClient { get; set; }
         public int IdEmployee { get; set; }
         public int IdPart { get; set; }
+        public int IdUser { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Part Part { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

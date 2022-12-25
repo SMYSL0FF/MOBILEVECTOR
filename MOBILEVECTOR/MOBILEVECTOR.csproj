@@ -112,6 +112,15 @@
     <Compile Include="View\AuthorizationPage\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AuthorizationPage\New_Cheque.xaml.cs">
+      <DependentUpon>New_Cheque.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AuthorizationPage\New_Client.xaml.cs">
+      <DependentUpon>New_Client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AuthorizationPage\New_Employee_Info.xaml.cs">
+      <DependentUpon>New_Employee_Info.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainAdminPage.xaml.cs">
       <DependentUpon>MainAdminPage.xaml</DependentUpon>
     </Compile>
@@ -121,12 +130,6 @@
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AuthorizationPage\New_employee.xaml.cs">
-      <DependentUpon>New_employee.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\AuthorizationPage\Status.xaml.cs">
-      <DependentUpon>Status.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -134,6 +137,18 @@
     <Page Include="View\AuthorizationPage\Authorization.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\AuthorizationPage\New_Cheque.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AuthorizationPage\New_Client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AuthorizationPage\New_Employee_Info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainAdminPage.xaml">
       <SubType>Designer</SubType>
@@ -144,14 +159,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\AuthorizationPage\New_employee.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\AuthorizationPage\Status.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -198,7 +205,6 @@
     <Resource Include="Images\whatsapp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\zdes-nashi-polnomochiya-vse-okoncheno.mp4" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -209,6 +215,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="View\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

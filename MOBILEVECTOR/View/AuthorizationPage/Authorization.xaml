@@ -32,7 +32,7 @@
                          Style="{StaticResource MaterialDesignTextBox}"
                          materialDesign:HintAssist.Hint="Login"
                          materialDesign:HintAssist.FloatingOffset="0,-20"
-                         BorderThickness="0 0 0 1.5" 
+                         
                          Background="#FF71778E" CaretBrush="#FF7A819B" SelectionBrush="#FF71778E" />
 
                     <PasswordBox Name="PsbPassword"
