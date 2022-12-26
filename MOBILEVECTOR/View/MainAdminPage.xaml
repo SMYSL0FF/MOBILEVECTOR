@@ -463,11 +463,5 @@
                                  Cursor="Hand" 
                                  Foreground="Black"
                                  ToolTip="Обновить"/>
-
-
-
-
-
-
     </Grid>
 </Page>

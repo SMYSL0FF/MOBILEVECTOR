@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="822346dca399482396715b9bce82dc0d" Name="Diagram1">
+      <Diagram DiagramId="0345e94a4de349299a24cb4f0e8d34b3" Name="Diagram1">
         <EntityTypeShape EntityType="MOBILEVECTORModel.Cheque" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MOBILEVECTORModel.Client" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MOBILEVECTORModel.Client" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="MOBILEVECTORModel.Employee" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MOBILEVECTORModel.Part" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MOBILEVECTORModel.Role" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MOBILEVECTORModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MOBILEVECTORModel.Users" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MOBILEVECTORModel.Users" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
         <AssociationConnector Association="MOBILEVECTORModel.FK_Cheque_Client" ManuallyRouted="false" />
         <AssociationConnector Association="MOBILEVECTORModel.FK_Cheque_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="MOBILEVECTORModel.FK_Cheque_Part" ManuallyRouted="false" />

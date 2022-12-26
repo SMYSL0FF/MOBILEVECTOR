@@ -27,7 +27,6 @@ namespace MOBILEVECTOR.Model
         public string AddressClient { get; set; }
         public string TelegramUsername { get; set; }
         public string Device { get; set; }
-        public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cheque> Cheque { get; set; }
